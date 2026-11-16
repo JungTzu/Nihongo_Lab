@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nihongo Lab | JLPT 日語文法與易混淆句型知識庫</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="navbar-container">
+      <a href="index.html" class="brand-logo">Nihongo Lab 日語知識庫</a>
+      <span class="nav-back">Powered by AGENTS.md</span>
+    </div>
+  </nav>
+
+  <main class="container">
+    <section class="hero">
+      <h1>JLPT 日語文法與詞彙知識庫</h1>
+      <p>系統化整理 N5 至 N1 核心句型、接續公式與易混淆文法比較。本專案透過 <code>AGENTS.md</code> 定義結構化開發規範，讓 AI 能依循一致標準自動擴充新講義。</p>
+    </section>
+
+    <!-- 級別篩選器 -->
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">全部級別 (All)</button>
+      <button class="filter-btn" data-filter="n1">JLPT N1</button>
+      <button class="filter-btn" data-filter="n2">JLPT N2</button>
+      <button class="filter-btn" data-filter="n3">JLPT N3</button>
+      <button class="filter-btn" data-filter="n4">JLPT N4</button>
+      <button class="filter-btn" data-filter="n5">JLPT N5</button>
+    </div>
+
+    <!-- 講義卡片索引區 (AI 新增講義時將自動插入於此區塊最上方) -->
+    <div class="card-grid" id="lesson-grid">
+
+      <a href="lessons/n3-uchi-ni.html" class="lesson-card" data-level="n3">
+        <div class="card-meta">
+          <span class="badge badge-n3">JLPT N3</span>
+          <span class="tag">易混淆比較</span>
+        </div>
+        <h3 class="card-title">～うちに（趁著…／在…期間內）</h3>
+        <p class="card-desc">深入解析「～うちに」的趁早行動語感，並徹底釐清與「～あいだに」在狀態變化上的關鍵差異。</p>
+        <span class="card-link">閱讀完整講義 &rarr;</span>
+      </a>
+
+      <a href="lessons/n2-ni-tsuke.html" class="lesson-card" data-level="n2">
+        <div class="card-meta">
+          <span class="badge badge-n2">JLPT N2</span>
+          <span class="tag">文法解析</span>
+        </div>
+        <h3 class="card-title">～につけ（每當…就…／不論…都…）</h3>
+        <p class="card-desc">掌握「每逢某種契機便自然湧現某種心情」的用法，以及「AにつけBにつけ」成對慣用表現。</p>
+        <span class="card-link">閱讀完整講義 &rarr;</span>
+      </a>
+
+    </div>
+  </main>
+
+  <footer>
+    <p>Nihongo Lab &copy; 2026 | 遵循 AGENTS.md 模組化規範建置之 AI 協作知識庫</p>
+  </footer>
+
+  <script>
+    // 級別篩選互動邏輯
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.lesson-card');
+
+    filterButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filterButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const targetLevel = btn.getAttribute('data-filter');
+        cards.forEach(card => {
+          if (targetLevel === 'all' || card.getAttribute('data-level') === targetLevel) {
+            card.style.display = 'flex';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

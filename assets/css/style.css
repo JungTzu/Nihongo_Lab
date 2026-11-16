@@ -1,0 +1,385 @@
+/* ==========================================================================
+   Nihongo Lab - 全站共用樣式表 (遵循 AGENTS.md 設計系統規範)
+   ========================================================================== */
+
+:root {
+  --bg-main: #F9F8F6;
+  --bg-card: #FFFFFF;
+  --bg-subtle: #F1EFEA;
+  --text-main: #2C302E;
+  --text-muted: #666B68;
+  --primary: #2B4C7E;
+  --primary-light: #EBF1F8;
+  --border-color: #E2DFD7;
+
+  /* JLPT 級別專屬標籤色 */
+  --badge-n5: #6B9080;
+  --badge-n4: #4A7C59;
+  --badge-n3: #D97706;
+  --badge-n2: #DC2626;
+  --badge-n1: #6D28D9;
+
+  --radius-md: 10px;
+  --radius-lg: 14px;
+  --shadow-sm: 0 2px 8px rgba(44, 48, 46, 0.05);
+  --shadow-hover: 0 8px 20px rgba(43, 76, 126, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  font-family: "PingFang TC", "Noto Sans TC", "Hiragino Kaku Gothic ProN", "Meiryo", sans-serif;
+  line-height: 1.75;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 頂部導覽列 */
+.navbar {
+  background-color: var(--bg-card);
+  border-bottom: 1px solid var(--border-color);
+  padding: 1rem 1.5rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar-container {
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-logo {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--primary);
+  text-decoration: none;
+  letter-spacing: 0.5px;
+}
+
+.nav-back {
+  color: var(--text-muted);
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-back:hover {
+  color: var(--primary);
+}
+
+/* 主要內容容器 */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 4rem;
+}
+
+/* 首頁 Hero 區塊 */
+.hero {
+  text-align: center;
+  margin-bottom: 2.5rem;
+  padding: 2rem 1rem;
+  background: var(--bg-card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+}
+
+.hero h1 {
+  font-size: 2rem;
+  color: var(--primary);
+  margin-bottom: 0.75rem;
+}
+
+.hero p {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+/* 首頁級別篩選按鈕 */
+.filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.filter-btn {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  color: var(--text-main);
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.filter-btn.active {
+  background: var(--primary);
+  color: #FFFFFF;
+  border-color: var(--primary);
+}
+
+/* 首頁講義卡片 Grid */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+  gap: 1.5rem;
+}
+
+.lesson-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.5rem;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+.lesson-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+}
+
+.card-meta {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+  margin-bottom: 0.85rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  color: var(--text-main);
+  margin-bottom: 0.5rem;
+}
+
+.card-desc {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+  flex-grow: 1;
+}
+
+.card-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary);
+}
+
+/* 標籤系統 (Badges & Tags) */
+.badge {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  border-radius: 6px;
+  letter-spacing: 0.5px;
+}
+
+.badge-n5 { background-color: var(--badge-n5); }
+.badge-n4 { background-color: var(--badge-n4); }
+.badge-n3 { background-color: var(--badge-n3); }
+.badge-n2 { background-color: var(--badge-n2); }
+.badge-n1 { background-color: var(--badge-n1); }
+
+.tag {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--primary);
+  background-color: var(--primary-light);
+  border-radius: 6px;
+}
+
+/* 講義內頁樣式 */
+.lesson-header {
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid var(--border-color);
+}
+
+.lesson-header h1 {
+  font-size: 2rem;
+  margin: 0.75rem 0 0.5rem;
+  color: var(--text-main);
+}
+
+.subtitle {
+  font-size: 1.1rem;
+  color: var(--text-muted);
+}
+
+.section-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  margin-bottom: 1.75rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.section-card h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-bottom: 1.1rem;
+  padding-left: 0.75rem;
+  border-left: 4px solid var(--primary);
+}
+
+.formula-box {
+  background: var(--bg-subtle);
+  border-left: 4px solid var(--badge-n3);
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  margin-bottom: 1.25rem;
+}
+
+.section-card ul {
+  padding-left: 1.25rem;
+}
+
+.section-card li {
+  margin-bottom: 0.5rem;
+}
+
+/* 例句與 Ruby 振假名排版 */
+.example-item {
+  padding: 1rem 0;
+  border-bottom: 1px dashed var(--border-color);
+}
+
+.example-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.jp-sentence {
+  font-size: 1.15rem;
+  margin-bottom: 0.35rem;
+  line-height: 2.1;
+}
+
+.zh-translation {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+}
+
+.highlight {
+  color: var(--primary);
+  font-weight: 700;
+  background: var(--primary-light);
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+}
+
+ruby {
+  ruby-align: center;
+}
+
+rt {
+  font-size: 0.62em;
+  color: var(--text-muted);
+  font-weight: 400;
+}
+
+/* 易混淆比較表 */
+.table-responsive {
+  overflow-x: auto;
+}
+
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.comparison-table th,
+.comparison-table td {
+  border: 1px solid var(--border-color);
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: top;
+}
+
+.comparison-table th {
+  background-color: var(--bg-subtle);
+  color: var(--text-main);
+  font-weight: 700;
+}
+
+/* 隨堂小測驗 */
+.quiz-question {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+
+.quiz-options {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin-bottom: 1.25rem;
+}
+
+.quiz-options li {
+  background: var(--bg-main);
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--border-color);
+  margin-bottom: 0.5rem;
+}
+
+details {
+  background: var(--primary-light);
+  border-radius: 8px;
+  padding: 0.85rem 1.1rem;
+}
+
+summary {
+  font-weight: 700;
+  color: var(--primary);
+  cursor: pointer;
+}
+
+.answer-content {
+  margin-top: 0.75rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(43, 76, 126, 0.2);
+}
+
+footer {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  border-top: 1px solid var(--border-color);
+}
